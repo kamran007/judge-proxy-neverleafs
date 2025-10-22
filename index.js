@@ -12,7 +12,7 @@ const SHOP_DOMAIN = '6aef0b-62.myshopify.com'; // replace with your Shopify stor
 const API_TOKEN = 'GWa2chlkNUKGbOhQMcxHQaRNXYs';    // replace with your Judge.me private API token
 const PER_PAGE = 20; // number of reviews to fetch
 
-app.get('/api/reviews', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const response = await fetch(
       `https://judge.me/api/v1/reviews?shop_domain=${SHOP_DOMAIN}&api_token=${API_TOKEN}&per_page=${PER_PAGE}&page=1`

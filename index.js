@@ -14,8 +14,12 @@ const PER_PAGE = 20; // number of reviews to fetch
 
 app.get('/', async (req, res) => {
   try {
+    const shop_name = req.query.shop || SHOP_DOMAIN;
+    const token = req.query.token || API_TOKEN;
+    const per_page = req.query.per_page || PER_PAGE;
+    const page_no = req.query.page || 1;
     const response = await fetch(
-      `https://judge.me/api/v1/reviews?shop_domain=${SHOP_DOMAIN}&api_token=${API_TOKEN}&per_page=${PER_PAGE}&page=1`
+      `https://judge.me/api/v1/reviews?shop_domain=${shop_name}&api_token=${token}&per_page=${per_page}&page=${page_no}`
     );
     const data = await response.json();
     res.json(data.reviews || []);
